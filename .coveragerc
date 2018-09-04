@@ -1,5 +1,2 @@
 [run]
-omit = modeltranslation_xliff/tests/*
-       modeltranslation_xliff/migrations/*
-       modeltranslation_xliff/__init__.py
-       modeltranslation_xliff/apps.py
+omit = testapp/*

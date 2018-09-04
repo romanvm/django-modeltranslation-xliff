@@ -1,11 +1,16 @@
+import os
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 DEBUG = True
 SECRET_KEY = 'aImQrd3sPlxm2s4ZfCgafxCPmj9ZeL5a'
-ROOT_URLCONF = 'tests.testapp.urls'
+ROOT_URLCONF = 'testapp.urls'
+WSGI_APPLICATION = 'testapp.wsgi.application'
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': ':memory:',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -18,7 +23,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.sites',
-    'tests.testapp',
+    'testapp',
 )
 
 MIDDLEWARE = (

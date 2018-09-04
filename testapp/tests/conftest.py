@@ -1,5 +1,5 @@
 import pytest
-from .testapp.models import Article
+from testapp.models import Article
 
 
 @pytest.fixture

@@ -3,8 +3,8 @@ from unittest import mock
 import pytest
 from django.contrib.messages import INFO, ERROR
 from django.urls import reverse
-from .testapp.admin import ArticleAdmin
-from .testapp.models import Article
+from testapp.admin import ArticleAdmin
+from testapp.models import Article
 from .data import XLIFF_EN, XLIFF_RU, TEST_DATA_RU
 
 
