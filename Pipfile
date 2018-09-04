@@ -10,7 +10,7 @@ pytest-django = "*"
 tox = "*"
 
 [packages]
-django = "==2.1.1"
+django = ">=1.11"
 django-modeltranslation = ">=0.13-beta1"
 lxml = "*"
 
