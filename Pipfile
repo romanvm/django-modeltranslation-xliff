@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[dev-packages]
+pytest = "*"
+pytest-cov = "*"
+pytest-django = "*"
+tox = "*"
+
+[packages]
+django = "==2.1.1"
+django-modeltranslation = ">=0.13-beta1"
+lxml = "*"
+
+[scripts]
+test = "pytest -vv"
+coverage = "pytest --cov modeltranslation_xliff --cov-report term --cov-report html"
+server = "python manage.py runserver"
+
+[pipenv]
+allow_prereleases = true

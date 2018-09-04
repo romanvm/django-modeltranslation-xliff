@@ -1,0 +1,12 @@
+{% extends 'admin/change_list.html' %}
+{% load i18n %}
+{% block object-tools %}
+  <div class="submit-row">
+    <form action="import-xliff/" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="file" name="_upload-xliff" accept=".xlf,.xliff" style="height:18px;">
+      <input type="submit" value="{% trans 'Import XLIFF' %}" name="_import-xliff">
+    </form>
+  </div>
+  {{ block.super }}
+{% endblock %}
