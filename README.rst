@@ -8,7 +8,7 @@ tools and import content in target languages from translated XLIFF files.
 .. figure:: https://raw.githubusercontent.com/romanvm/django-modeltranslation-xliff/master/screenshot.png
   :alt: XLIFF Exchange screenshot
 
-**This project is in WIP state and will be released as soon as it's ready.***
+**This project is in WIP state and will be released as soon as it's ready!**
 
 .. _django-modeltranslation: https://github.com/deschler/django-modeltranslation
 .. _OASIS XLIFF: https://en.wikipedia.org/wiki/XLIFF
