@@ -8,12 +8,9 @@ language: python
 
 env:
   - CMD="docker exec -t ubuntu-test bash -c "
-  - D_LC="LC_ALL=en_US.UTF-8"
-  - D_LNG="LANG=en_US.UTF-8"
-  - D_LANG="LANGUAGE=en_US.UTF-8"
 
 before_install:
-  - docker run -d --name ubuntu-test --env $D_LC --env $D_LNG --env $D_LANG -v $(pwd):/travis ubuntu:latest tail -f /dev/null
+  - docker run -d --name ubuntu-test -e "LC_ALL=en_US.UTF-8" -e "LANG=en_US.UTF-8" -e "LANGUAGE=en_US.UTF-8" -v $(pwd):/travis ubuntu:latest tail -f /dev/null
   - docker ps
 
 install:
