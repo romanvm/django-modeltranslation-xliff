@@ -7,12 +7,13 @@ services:
 language: python
 
 env:
-  - CMD="docker exec -t ubuntu-test bash -c "
+  - CMD="docker exec -t ubuntu-test bash -c"
 
 before_install:
   - echo "LC_ALL=en_US.UTF-8" > .env-file
   - echo "LANG=en_US.UTF-8" >> .env-file
   - echo "LANGUAGE=en_US.UTF-8" >> .env-file
+  - echo "PIPENV_DEFAULT_PYTHON_VERSION=3.6"
   - docker run -d --name ubuntu-test --env-file .env-file -v $(pwd):/travis ubuntu:latest tail -f /dev/null
   - docker ps
 
