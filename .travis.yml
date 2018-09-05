@@ -6,25 +6,27 @@ services:
 # It is not really needed, other than for showing correct language tag in Travis CI build log.
 language: python
 
+env:
+  - CMD="docker exec -t ubuntu-test bash -c "
+
 before_install:
   - docker run -d --name ubuntu-test -v $(pwd):/travis ubuntu:latest tail -f /dev/null
   - docker ps
 
 install:
-  - docker exec -t ubuntu-test bash -c "
-    apt update &&
-    apt install -y build-essential python3-dev python3-pip &&
-    apt install -y software-properties-common &&
-    add-repository -y ppa:deadsnakes/ppa &&
-    apt update &&
-    apt install -y python3.4-dev python3.5-dev python3.7-dev &&
-    pip3 install --upgrade pip &&
-    pip3 install setuptools pipenv"
+  - $CMD "apt update"
+  - $CMD "apt install -y build-essential python3-dev python3-pip"
+  - $CMD "apt install -y software-properties-common"
+  - $CMD "add-repository -y ppa:deadsnakes/ppa"
+  - $CMD "apt update"
+  - $CMD "apt install -y python3.4-dev python3.5-dev python3.7-dev"
+  - $CMD "pip3 install --upgrade pip"
+  - $CMD "pip3 install setuptools pipenv"
 
 script:
-  - docker exec -t ubuntu-test bash -c "
-    cd /travis &&
-    tox"
+  - $CMD "cd /travis"
+  - $CMD "pipenv install --dev --skip-lock"
+  - $CMD "pipenv run tox"
 
 notifications:
     email: false
