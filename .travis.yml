@@ -10,7 +10,7 @@ env:
   - CMD="docker exec -t ubuntu-test bash -c"
 
 before_install:
-  - docker run -d --name ubuntu-test --env-file .env-docker -w /travis -v $(pwd):/travis ubuntu:latest tail -f /dev/null
+  - docker run -d --name ubuntu-test --env-file .env-docker -v $(pwd):/travis -w /travis ubuntu:latest tail -f /dev/null
   - docker ps
 
 install:
