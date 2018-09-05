@@ -12,7 +12,7 @@ env:
 before_install:
   - docker run -d --name ubuntu-test --env-file .env-docker -v $(pwd):/travis ubuntu:latest tail -f /dev/null
   - docker ps
-  - $CMD "echo 'cd /travis' >> .bashrc"
+  - $CMD "touch /root/.bashrc && echo 'cd /travis' >> /root/.bashrc"
 
 install:
   - $CMD "apt update"
