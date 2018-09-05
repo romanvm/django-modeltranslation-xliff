@@ -30,7 +30,6 @@ install:
   - $CMD "pip3 install setuptools pipenv"
 
 script:
-  - $CMD "echo $LC_ALL $LANG $LANGUAGE"
   - $CMD "cd /travis"
   - $CMD "pipenv install --dev --skip-lock"
   - $CMD "pipenv run tox"
