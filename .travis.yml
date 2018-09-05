@@ -13,7 +13,7 @@ env:
   - D_LANG="LANGUAGE=en_US.UTF-8"
 
 before_install:
-  - docker run -d --name ubuntu-test -v $(pwd):/travis -e $D_LC -e $D_LNG -e $D_LANG ubuntu:latest tail -f /dev/null
+  - docker run -d --name ubuntu-test --env $D_LC --env $D_LNG --env $D_LANG -v $(pwd):/travis ubuntu:latest tail -f /dev/null
   - docker ps
 
 install:
