@@ -10,12 +10,15 @@ env:
   - CMD="docker exec -t ubuntu-test bash -c "
 
 before_install:
-  - echo "LC_ALL=en_US.UTF-8\nLANG=en_US.UTF-8\nLANGUAGE=en_US.UTF-8" > .env-file
+  - echo "LC_ALL=en_US.UTF-8" > .env-file
+  - echo "LANG=en_US.UTF-8" >> .env-file
+  - echo "LANGUAGE=en_US.UTF-8" >> .env-file
   - docker run -d --name ubuntu-test --env-file .env-file -v $(pwd):/travis ubuntu:latest tail -f /dev/null
   - docker ps
 
 install:
   - $CMD "apt update"
+  - $CMD "locale-gen en_US.UTF-8"
   - $CMD "apt install -y apt-utils"
   - $CMD "apt install -y build-essential python3-dev python3-pip"
   - $CMD "apt install -y software-properties-common"
