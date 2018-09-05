@@ -12,18 +12,18 @@ before_install:
 
 install:
   - docker exec -t ubuntu-test bash -c "
-    apt update;
-    apt install -y build-essential python3-dev python3-pip;
-    apt install -y software-properties-common;
-    add-repository -y ppa:deadsnakes/ppa;
-    apt update;
-    apt install -y python3.4-dev python3.5-dev python3.7-dev;
-    pip3 install --upgrade pip;
+    apt update &&
+    apt install -y build-essential python3-dev python3-pip &&
+    apt install -y software-properties-common &&
+    add-repository -y ppa:deadsnakes/ppa &&
+    apt update &&
+    apt install -y python3.4-dev python3.5-dev python3.7-dev &&
+    pip3 install --upgrade pip &&
     pip3 install setuptools pipenv"
 
 script:
   - docker exec -t ubuntu-test bash -c "
-    cd /travis;
+    cd /travis &&
     tox"
 
 notifications:
