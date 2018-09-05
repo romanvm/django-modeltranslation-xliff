@@ -5,6 +5,7 @@ services:
 
 # It is not really needed, other than for showing correct language tag in Travis CI build log.
 language: python
+python: "3.6"
 
 env:
   - CMD="docker exec -t ubuntu-test bash -c"
@@ -27,7 +28,7 @@ install:
   - $CMD "pip3 install setuptools pipenv"
 
 script:
-  - $CMD "pipenv install --dev --skip-lock"
+  - $CMD "pipenv install --dev --system --skip-lock"
   - $CMD "pipenv run tox"
 
 notifications:
