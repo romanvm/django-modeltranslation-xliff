@@ -1,24 +1,30 @@
-language: python
-python:
-  - "3.4"
-  - "3.5"
-  - "3.6"
-  - "3.7"
-cache: pip
-env:
-  - DJANGO = "1.11"
-  - DJANGO = "2.0"
-  - DJANGO = "2.1"
-matrix:
-  exclude:
-  - env: DJANGO = "1.11"
-    python: "3.7"
-  - env: DJANGO = "2.0"
-    python: "3.4"
-  - env: DJANGO = "2.1"
-    python: "3.4"
+sudo: required
 
-install: pip install tox-travis
-script: tox
+services:
+  - docker
+
+# It is not really needed, other than for showing correct language tag in Travis CI build log.
+language: python
+
+before_install:
+  - docker run -d --name ubuntu-test -v $(pwd):/travis ubuntu:latest tail -f /dev/null
+  - docker ps
+
+install:
+  - docker exec -t ubuntu-test bash -c "
+    apt update;
+    apt install -y build-essential python3-dev python3-pip;
+    apt install -y software-properties-common;
+    add-repository -y ppa:deadsnakes/ppa;
+    apt update;
+    apt install -y python3.4-dev python3.5-dev python3.7-dev;
+    pip3 install --upgrade pip;
+    pip3 install setuptools pipenv"
+
+script:
+  - docker exec -t ubuntu-test bash -c "
+    cd /travis;
+    tox"
+
 notifications:
-  email: false
+    email: false
