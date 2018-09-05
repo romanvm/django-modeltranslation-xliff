@@ -10,12 +10,9 @@ env:
   - CMD="docker exec -t ubuntu-test bash -c"
 
 before_install:
-  - echo "LC_ALL=en_US.UTF-8" > .env-file
-  - echo "LANG=en_US.UTF-8" >> .env-file
-  - echo "LANGUAGE=en_US.UTF-8" >> .env-file
-  - echo "PIPENV_DEFAULT_PYTHON_VERSION=3.6"
-  - docker run -d --name ubuntu-test --env-file .env-file -v $(pwd):/travis ubuntu:latest tail -f /dev/null
+  - docker run -d --name ubuntu-test --env-file .env-docker -v $(pwd):/travis ubuntu:latest tail -f /dev/null
   - docker ps
+  - $CMD "echo 'cd /travis' >> .bashrc"
 
 install:
   - $CMD "apt update"
@@ -31,9 +28,8 @@ install:
   - $CMD "pip3 install setuptools pipenv"
 
 script:
-  - $CMD "cd /travis &&
-          pipenv install --dev --skip-lock &&
-          pipenv run tox"
+  - $CMD "pipenv install --dev --skip-lock"
+  - $CMD "pipenv run tox"
 
 notifications:
     email: false
