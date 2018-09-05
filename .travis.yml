@@ -30,9 +30,9 @@ install:
   - $CMD "pip3 install setuptools pipenv"
 
 script:
-  - $CMD "cd /travis"
-  - $CMD "pipenv install --dev --skip-lock"
-  - $CMD "pipenv run tox"
+  - $CMD "cd /travis &&
+          pipenv install --dev --skip-lock &&
+          pipenv run tox"
 
 notifications:
     email: false
