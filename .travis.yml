@@ -8,13 +8,16 @@ language: python
 
 env:
   - CMD="docker exec -t ubuntu-test bash -c "
+  - D_LC="LC_ALL=C.UTF-8"
+  - D_LANG="LANG=C.UTF-8"
 
 before_install:
-  - docker run -d --name ubuntu-test -v $(pwd):/travis ubuntu:latest tail -f /dev/null
+  - docker run -d --name ubuntu-test -v $(pwd):/travis -e $D_LC -e $D_LANG ubuntu:latest tail -f /dev/null
   - docker ps
 
 install:
   - $CMD "apt update"
+  - $CMD "apt install -y apt-utils"
   - $CMD "apt install -y build-essential python3-dev python3-pip"
   - $CMD "apt install -y software-properties-common"
   - $CMD "apt-add-repository -y ppa:deadsnakes/ppa"
