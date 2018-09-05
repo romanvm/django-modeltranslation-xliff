@@ -8,11 +8,12 @@ language: python
 
 env:
   - CMD="docker exec -t ubuntu-test bash -c "
-  - D_LC="LC_ALL=C.UTF-8"
-  - D_LANG="LANG=C.UTF-8"
+  - D_LC="LC_ALL=en_US.UTF-8"
+  - D_LNG="LANG=en_US.UTF-8"
+  - D_LANG="LANGUAGE=en_US.UTF-8"
 
 before_install:
-  - docker run -d --name ubuntu-test -v $(pwd):/travis -e $D_LC -e $D_LANG ubuntu:latest tail -f /dev/null
+  - docker run -d --name ubuntu-test -v $(pwd):/travis -e $D_LC -e $D_LNG -e $D_LANG ubuntu:latest tail -f /dev/null
   - docker ps
 
 install:
@@ -27,6 +28,7 @@ install:
   - $CMD "pip3 install setuptools pipenv"
 
 script:
+  - $CMD "echo $LC_ALL $LANG $LANGUAGE"
   - $CMD "cd /travis"
   - $CMD "pipenv install --dev --skip-lock"
   - $CMD "pipenv run tox"
