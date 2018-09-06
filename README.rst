@@ -83,18 +83,18 @@ such as **TinyMCE** or **CKEditor**.
 Setup Parameters
 ----------------
 
-XLIFF Exchange supports the following parameters in Django ``setup.py`` file:
+XLIFF Exchange supports the following settings in Django ``settings.py`` file:
 
 - ``XLIFF_EXCHANGE_DISABLE_NLTK``: By default XLIFF Exchange tries to split
   translatable content into translation segments using sentence tokenizer from
-  `NLTK`_. Set this option to ``False`` if you want to disable this feature or if your
+  `NLTK`_. Set this settings to ``False`` if you want to disable this feature or if your
   language is not supported. You can find the list of supported languages in
   `nltk_data project`_ on GitHub.
 - ``XLIFF_EXCHANGE_CONTENT_TYPE``: The type of translatable content
   (default: ``'html'``). Currently only ``'html'`` and ``'text'``
-  types are supported. Default content type (``'html'``) supports plain text as well.
-  However, if you content does not include any HTML markup you may want to set
-  this parameter to ``'text'`` to avoid unnecessary HTML parsing overhead.
+  types are supported. Default content type (``'html'``) supports plain text as well,
+  but if you content does not include any HTML markup you may want to set
+  this settings to ``'text'`` to avoid unnecessary HTML parsing overhead.
 
 License
 -------
