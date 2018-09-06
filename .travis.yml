@@ -22,8 +22,8 @@ install:
   - $CMD "apt-add-repository -y ppa:deadsnakes/ppa"
   - $CMD "apt-get update"
   - $CMD "apt-get install -y python3-dev python3-pip python3.4-dev python3.5-dev python3.7-dev"
-  - $CMD "python3 -m pip install --upgrade pip"
-  - $CMD "python3 -m pip install setuptools pipenv"
+  - $CMD "python3 -m pip install --upgrade pip setuptools"
+  - $CMD "python3 -m pip install pipenv"
 
 script:
   - $CMD "pipenv install --dev --system --skip-lock"

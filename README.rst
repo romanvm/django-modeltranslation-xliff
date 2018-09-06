@@ -80,8 +80,8 @@ XLIFF Exchange for django-modeltranslation conforms to
 authored with JavaScript WYSIWYG editors that save content in HTML format
 such as **TinyMCE** or **CKEditor**.
 
-Setup Parameters
-----------------
+Settings
+--------
 
 XLIFF Exchange supports the following settings in Django ``settings.py`` file:
 
