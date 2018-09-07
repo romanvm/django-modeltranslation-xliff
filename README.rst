@@ -3,6 +3,8 @@ XLIFF Exchange for django-modeltranslation
 
 .. image:: https://travis-ci.org/romanvm/django-modeltranslation-xliff.svg?branch=master
     :target: https://travis-ci.org/romanvm/django-modeltranslation-xliff
+.. image:: https://codecov.io/gh/romanvm/django-modeltranslation-xliff/branch/master/graph/badge.svg
+  :target: https://codecov.io/gh/romanvm/django-modeltranslation-xliff
 
 **This project is in WIP state and will be released as soon as it's ready!**
 
