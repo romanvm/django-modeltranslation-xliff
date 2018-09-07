@@ -19,6 +19,7 @@ setup(
         'Django>=1.11',
         'django-modeltranslation>=0.13b1',
         'nltk',
+        'lxml',
     ],
     setup_requires=['pytest-runner'],
     test_require=['pytest', 'pytest-cov', 'pytest-django'],
