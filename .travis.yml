@@ -22,8 +22,10 @@ matrix:
   - python: "3.7"
     dist: xenial
     sudo: required
-install: pip install tox-travis codecov
-script: codecov run tox
+install:
+  - pip install codecov pipenv
+  - pipenv install --system --skip-lock
+script: pipenv run pytest -vv --cov modeltranslation_xliff
 after_success:
   - codecov
 notifications:
