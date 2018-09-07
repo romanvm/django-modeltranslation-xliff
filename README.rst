@@ -79,8 +79,8 @@ child classes, e.g. ``TabbedTranslationAdmin``.
 
 XLIFF Exchange for django-modeltranslation conforms to
 `XLIFF 1.2 Representation Guide for HTML`_ so it can be used with content
-authored with JavaScript WYSIWYG editors that save content in HTML format
-such as **TinyMCE** or **CKEditor**.
+authored with JavaScript WYSIWYG editors such as **TinyMCE** or **CKEditor**
+that save content in HTML format.
 
 Important Notes
 ---------------
