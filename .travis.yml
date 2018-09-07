@@ -26,8 +26,10 @@ matrix:
     dist: trusty
   - python: "3.7"
     dist: xenial
-    sudo: true
-install: pip install tox-travis
-script: tox
+    sudo: required
+install: pip install tox-travis codecov
+script: codecov
+after_success:
+  - codecov
 notifications:
   email: false
