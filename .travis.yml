@@ -20,6 +20,11 @@ matrix:
   - python: "3.7"
     dist: xenial
     sudo: required
+    DJANGO=2.0
+  - python: "3.7"
+    dist: xenial
+    sudo: required
+    DJANGO=2.1
 install:
   - pip install codecov pipenv
   - pipenv install --dev --system --skip-lock
