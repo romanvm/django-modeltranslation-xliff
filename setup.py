@@ -22,6 +22,6 @@ setup(
         'lxml',
     ],
     setup_requires=['pytest-runner'],
-    test_require=['pytest', 'pytest-cov', 'pytest-django'],
+    test_require=['pytest', 'pytest-django'],
     zip_safe=False
 )
