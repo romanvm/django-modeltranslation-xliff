@@ -82,6 +82,16 @@ XLIFF Exchange for django-modeltranslation conforms to
 authored with JavaScript WYSIWYG editors that save content in HTML format
 such as **TinyMCE** or **CKEditor**.
 
+Important Notes
+---------------
+
+- XLIFF Exchange does not accept partially translated XLIFF files, that is,
+  files with missing target translations.
+- Some translation tools allow to create "intermediary" XLIFF files for exchanging
+  translations with other tools. XLIFF Exchange does not support such files.
+  Translations needs to be saved as "target" XLIFF files that contain all necessary
+  metadata for importing translations back to your Django project.
+
 Settings
 --------
 
