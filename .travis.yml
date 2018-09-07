@@ -26,7 +26,7 @@ matrix:
     dist: trusty
   - python: "3.7"
     dist: xenial
-    sudo: required
+    sudo: true
 install: pip install tox-travis
 script: tox
 notifications:
