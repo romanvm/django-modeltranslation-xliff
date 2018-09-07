@@ -28,7 +28,7 @@ matrix:
     dist: xenial
     sudo: required
 install: pip install tox-travis codecov
-script: codecov
+script: codecov run tox
 after_success:
   - codecov
 notifications:
