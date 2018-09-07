@@ -1,9 +1,5 @@
 language: python
 cache: pip
-python:
-  - "3.4"
-  - "3.5"
-  - "3.6"
 env:
   - DJANGO=1.11
   - DJANGO=2.0
