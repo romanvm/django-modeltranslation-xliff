@@ -2,7 +2,7 @@ XLIFF Exchange for django-modeltranslation
 ==========================================
 
 .. image:: https://travis-ci.org/romanvm/django-modeltranslation-xliff.svg?branch=master
-    :target: https://travis-ci.org/romanvm/django-modeltranslation-xliff
+  :target: https://travis-ci.org/romanvm/django-modeltranslation-xliff
 .. image:: https://codecov.io/gh/romanvm/django-modeltranslation-xliff/branch/master/graph/badge.svg
   :target: https://codecov.io/gh/romanvm/django-modeltranslation-xliff
 
@@ -112,7 +112,6 @@ License
 -------
 
 MIT. See ``LICENSE.txt``.
-
 
 .. _django-modeltranslation: https://github.com/deschler/django-modeltranslation
 .. _OASIS XLIFF: https://en.wikipedia.org/wiki/XLIFF
