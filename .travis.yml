@@ -1,5 +1,9 @@
 language: python
 cache: pip
+python:
+  - "3.4"
+  - "3.5"
+  - "3.6"
 env:
   - DJANGO=1.11
   - DJANGO=2.0
@@ -13,18 +17,12 @@ matrix:
   - env: DJANGO=2.1
     python: "3.4"
   include:
-  - python: "3.4"
-    dist: trusty
-  - python: "3.5"
-    dist: trusty
-  - python: "3.6"
-    dist: trusty
   - python: "3.7"
     dist: xenial
     sudo: required
 install:
   - pip install codecov pipenv
-  - pipenv install --system --skip-lock
+  - pipenv install --dev --system --skip-lock
 script: pipenv run pytest -vv --cov modeltranslation_xliff
 after_success:
   - codecov
