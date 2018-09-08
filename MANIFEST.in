@@ -1,2 +1,4 @@
-include README.rst
-include LICENSE.txt
+include .coveragerc LICENSE.txt manage.py pytest.ini README.rst requirements.txt tox.ini
+recursive-include modeltranslation_xliff *
+recursive-include testapp *
+global-exclude *.pyc *.pyo __pycache__

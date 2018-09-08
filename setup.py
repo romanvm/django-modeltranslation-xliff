@@ -22,6 +22,8 @@ setup(
         'nltk',
         'lxml',
     ],
+    setup_requires=['pytest-runner'],
+    test_require=['pytest', 'pytest-cov', 'pytest-django'],
     zip_safe=False,
     classifiers=[
         'Development Status :: 4 - Beta',
