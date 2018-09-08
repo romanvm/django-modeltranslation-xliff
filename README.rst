@@ -22,21 +22,21 @@ Introduction
 
 Django has good support for translating UI elements but lacks support for translating
 dynamic content stored in a database. There are a number of third-party packages
-exist for that purpose, including ``django-modeltranslation`` that uses registration
+for that purpose, including ``django-modeltranslation`` that uses registration
 approach for adding translations to Django model fields. It also provides admin classes
 that allow to enter translations for model fields directly in Django admin interface.
 However, with large volumes of content and many translation languages such direct
 content manipulation can be quite cumbersome. XLIFF Exchange for django-modeltranslation
-simplifies translation management by providing an admin action for bulk esporting
+simplifies translation management by providing an admin action for bulk exporting
 translatable content to XLIFF 1.2 format and a form for uploading translated XLIFF
 files.
 
 XLIFF 1.2 files are supported bu most (if not all) offline and online translation tools,
 including **SDL Trados**, **Deja Vu**, **memoQ**, **Transifex**, **SmartCAT** and many others.
 You can simply export your content to XLIFF files, give them to your in-house
-translators or external translation contractors to translate, and then import
-translated contend back to your Django project. Translatable fields in respective
-languages will be updated automatically.
+or external translators to translate, and then import translated contend back
+to your Django project. Translatable fields in respective languages
+will be updated automatically.
 
 Compatibility
 -------------
@@ -85,6 +85,11 @@ that save content in HTML format.
 Important Notes
 ---------------
 
+- Currently ``XliffExchangeMixin`` class is incompatible with customized
+  ``ModelAdmin`` classes that use custom ``change_list_template`` and
+  ``actions`` class properties. As a workaround, you can include XLIFF file upload form
+  from ``modeltranslation_xliff/change_list.html`` template to your custom template
+  and/or add ``'export_xliff'`` action to your list of admin actions.
 - XLIFF Exchange does not accept partially translated XLIFF files, that is,
   files with missing target translations.
 - Some translation tools allow to create "intermediary" XLIFF files for exchanging
