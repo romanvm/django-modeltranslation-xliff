@@ -1,6 +1,6 @@
 from setuptools import setup
 
-VERSION = '0.0.1'
+VERSION = '1.0.0b1'
 
 with open('README.rst', 'r', encoding='utf-8') as fo:
     long_descr = fo.read()
