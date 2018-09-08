@@ -1,4 +1,0 @@
-ignore:
-  - "testapp/*"
-  - "manage.py"
-  - "setup.py"
