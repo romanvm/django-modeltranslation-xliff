@@ -15,6 +15,7 @@ setup(
     author_email='roman1972@gmail.com',
     description='XLIFF exchange for django-modeltranslation',
     long_description=long_descr,
+    python_requires='>=3.4',
     install_requires=[
         'Django>=1.11',
         'django-modeltranslation>=0.13b1',
@@ -23,5 +24,15 @@ setup(
     ],
     setup_requires=['pytest-runner'],
     test_require=['pytest', 'pytest-django'],
-    zip_safe=False
+    zip_safe=False,
+    classifiers=[
+        'Development Status :: 4 - Beta',
+        'Environment :: Web Environment',
+        'Framework :: Django',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python :: 3 :: Only',
+        'Topic :: Text Processing :: Linguistic'
+    ]
 )
