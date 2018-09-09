@@ -7,7 +7,7 @@ process plain text as well.
 import json
 import types
 from base64 import b64encode, b64decode
-from html import unescape
+from html import escape
 from django.core.exceptions import ValidationError, ImproperlyConfigured
 from django.utils.translation import ugettext_lazy as _
 try:
@@ -19,6 +19,8 @@ from . import parsers
 from .parsers.segmenter import is_supported_language, segment_text
 
 __all__ = ['create_xliff', 'import_xliff']
+
+FORBIDDEN_CHARS = ('<', '>', '&')
 
 
 def get_content_parser():
@@ -109,10 +111,17 @@ def get_inner_text(elem):
     :param elem: :class:`Element <xml.etree.ElementTree.Element>`
     :return: Element's content
     """
-    text = unescape(elem.text or '')
+    text = elem.text or ''
+    # ElementTree unescapes text content so we need to re-escape entities
+    # that are preserved by the HTML parser.
+    if CONTENT_TYPE == 'html' and text in FORBIDDEN_CHARS:
+        text = escape(text)
     for child in list(elem):
         text += get_inner_text(child)
-    text += unescape(elem.tail or '')
+    tail = elem.tail or ''
+    if CONTENT_TYPE == 'html' and tail in FORBIDDEN_CHARS:
+        tail = escape(tail)
+    text += tail
     return text
 
 
