@@ -6,6 +6,7 @@ DEBUG = True
 SECRET_KEY = 'aImQrd3sPlxm2s4ZfCgafxCPmj9ZeL5a'
 ROOT_URLCONF = 'testapp.urls'
 WSGI_APPLICATION = 'testapp.wsgi.application'
+SITE_ID = 1
 
 DATABASES = {
     'default': {
@@ -17,12 +18,14 @@ DATABASES = {
 INSTALLED_APPS = (
     'modeltranslation',
     'modeltranslation_xliff',
+    'tinymce',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.sites',
+    'django.contrib.staticfiles',
     'testapp',
 )
 
@@ -36,6 +39,22 @@ MIDDLEWARE = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+TEMPLATES = (
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+)
+
 LANGUAGE_CODE = 'en-us'
 
 LANGUAGES = [
@@ -45,3 +64,5 @@ LANGUAGES = [
 
 USE_I18N = True
 USE_L10N = True
+
+STATIC_URL = '/static/'
