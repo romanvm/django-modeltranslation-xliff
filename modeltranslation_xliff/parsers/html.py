@@ -95,12 +95,10 @@ class ContentParser(HTMLParser):
             self._current_block += data
 
     def handle_charref(self, name):
-        if self._current_block:
-            self._current_block += '&#' + name + ';'
+        self._current_block += '&#' + name + ';'
 
     def handle_entityref(self, name):
-        if self._current_block:
-            self._current_block += '&' + name + ';'
+        self._current_block += '&' + name + ';'
 
     def error(self, message):
         logging.error(message)

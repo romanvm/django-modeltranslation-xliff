@@ -13,7 +13,7 @@ def test_html_parser_html5():
     assert 'Paragraph <span class="foo">with</span><em>inline tags</em>.' in cont_list
     assert 'Second line' in cont_list and 'Third line' in cont_list
     assert 'Paragraph with enclosing inline tags.</strong>' in cont_list
-    assert 'Paragraph with entity&nbsp;reference.' in cont_list
+    assert '&quot;Paragraph with entity&nbsp;references.&quot;' in cont_list
     assert 'Paragraph with character&#160;reference.' in cont_list
     assert 'Inline image: <img src="http://via.placeholder.com/350x150" />' in cont_list
     assert '.foo { color: blue; }' not in cont_list

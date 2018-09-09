@@ -26,7 +26,7 @@ HTML5 = '''<!DOCTYPE html>
     <p>Paragraph <span class="foo">with</span> <em>inline tags</em>.</p>
     <p>Paragraph <a href="http://example.com">with a link</a>.</p>
     <p><strong>Paragraph with enclosing inline tags.</strong></p>
-    <p>Paragraph with entity&nbsp;reference.</p>
+    <p>&quot;Paragraph with entity&nbsp;references.&quot;</p>
     <p>Paragraph with character&#160;reference.</p>
     <p>First sentence. Second sentence. Third sentence</p>
     <p>Inline image: <img src="http://via.placeholder.com/350x150" /></p>
