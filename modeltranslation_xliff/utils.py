@@ -100,7 +100,7 @@ def create_xliff(translation_data):
                     trans_unit.append(source)
                     segment_id += 1
         internal_file.text = b64encode(skeleton.encode('utf-8')).decode('ascii')
-    return etree.tostring(etree.ElementTree(xliff), encoding='unicode')
+    return etree.tostring(xliff, encoding='unicode')
 
 
 def get_inner_text(elem):
