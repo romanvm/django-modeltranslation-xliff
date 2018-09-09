@@ -111,7 +111,7 @@ def get_inner_text(elem):
     """
     text = unescape(elem.text or '')
     for child in list(elem):
-        text += unescape(get_inner_text(child))
+        text += get_inner_text(child)
     text += unescape(elem.tail or '')
     return text
 
