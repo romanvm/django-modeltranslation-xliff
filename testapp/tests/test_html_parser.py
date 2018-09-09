@@ -6,7 +6,6 @@ from modeltranslation_xliff.parsers.html import parse_content, add_ph_tags, add_
 
 def test_html_parser_html5():
     cont_list = list(parse_content(HTML5))
-    print(cont_list[-1])
     assert len(cont_list) == 18
     assert 'HTML5 test sample' in cont_list
     assert 'html5, sample' in cont_list
