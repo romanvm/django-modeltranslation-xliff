@@ -41,13 +41,15 @@ SELF_CLOSING_TAGS = (
 
 IGNORE_BLOCK_TAGS = ('script', 'style')
 
+INVALID_XML_REFS = ('&lt;', '&gt;', '&amp;', '&#38;', '&#60;', '&#62;')
+
 charset_re = re.compile(rb'<meta[^>]+charset="?([\w-]+)"[^>]*>', re.I)
 whitespace_re = re.compile(r'^\s+$', re.U)
 tag_string_re = re.compile(r'^(<[^>]*>)$')
 tag_re = re.compile(r'(<[^>]+>)')
 open_tag_re = re.compile(r'<(\w+)[^>]*>')
 close_tag_re = re.compile(r'</(\w+)>')
-entity_re = re.compile(r'(&#?\w+?;)')
+entity_re = re.compile(r'(&#?[^;]+;)')
 pre_code_re = re.compile(r'^<pre[^>]*>\s*?<code[^>]*>', re.I)
 
 
@@ -94,13 +96,19 @@ class ContentParser(HTMLParser):
         if not self._ignore_block and not whitespace_re.search(data):
             self._current_block += data
 
+    def _add_ref(self, name):
+        if name in INVALID_XML_REFS:
+            self._current_block += name
+        else:
+            # "XLIFF 1.2 Representation Guide for HTML" strongly recommends
+            # to unescape all HTML entities
+            self._current_block += unescape(name)
+
     def handle_charref(self, name):
-        if self._current_block:
-            self._current_block += '&#' + name + ';'
+        self._add_ref('&#' + name + ';')
 
     def handle_entityref(self, name):
-        if self._current_block:
-            self._current_block += '&' + name + ';'
+        self._add_ref('&' + name + ';')
 
     def error(self, message):
         logging.error(message)
@@ -158,6 +166,26 @@ def parse_content(html):
                 yield item
 
 
+def add_ph_tags(segment):
+    # type: (str) -> str
+    """
+    Add <ph> tags to transaltion segment to protect entity references
+
+    :param segment: translation segment
+    :return: tagged segment
+    """
+    string = ''
+    chunks = entity_re.split(segment)
+    tag_id = 1
+    for chunk in chunks:
+        if chunk.startswith('&') and chunk.endswith(';'):
+            string += '<ph id="{}">{}</ph>'.format(tag_id, chunk)
+            tag_id += 1
+        else:
+            string += chunk
+    return string
+
+
 def find_tag(tag_name, tags_stack):
     # type: (str, list) -> int
     """
@@ -195,7 +223,9 @@ def add_t_tags(segment):
         open_tag_match = open_tag_re.search(chunk)
         if open_tag_match is not None:
             tag_name = open_tag_match.group(1)
-            if tag_name in SELF_CLOSING_TAGS:
+            if tag_name == 'ph':  # Ignore <ph> XLIFF tags
+                continue
+            elif tag_name in SELF_CLOSING_TAGS:
                 isolated_tags.append((i, tag_id))
                 tag_id += 1
                 continue
@@ -205,6 +235,8 @@ def add_t_tags(segment):
         close_tag_match = close_tag_re.search(chunk)
         if close_tag_match is not None:
             tag_name = close_tag_match.group(1)
+            if tag_name == 'ph':  # Ignore </ph> XLIFF tags
+                continue
             # If a closing tag does not have a pair in the stack
             # treat it as an isolated tag.
             open_tag_idx = find_tag(tag_name, tags_stack)
@@ -240,8 +272,6 @@ def add_xliff_tags(segment):
     Add inline XLIFF tags to translatable segment
 
     :param segment: translatable segment
-    :return: segment with HTML tags marked with XLIFF XML tags
+    :return: segment with HTML tags marked with inline XLIFF XML tags
     """
-    # "XLIFF 1.2 Representation Guide for HTML" strongly recommends to unescape
-    # all HTML entities
-    return add_t_tags(unescape(segment))
+    return add_t_tags(add_ph_tags(segment))
