@@ -8,7 +8,7 @@ XLIFF Exchange for django-modeltranslation
 
 **This project is in WIP state and will be released as soon as it's ready!**
 
-This is an extension for `django-modeltranslation`_ package that allows to export
+XLIFF Exchange is an extension for `django-modeltranslation`_ package that allows to export
 translatable content in `OASIS XLIFF`_ 1.2 format supported by most translation
 tools and import content in target languages from translated XLIFF files.
 
@@ -77,41 +77,10 @@ Minimal example:
 ``XliffExchangeMixin`` class is compatible with ``TranslationAdmin`` and its
 child classes, e.g. ``TabbedTranslationAdmin``.
 
-XLIFF Exchange for django-modeltranslation conforms to
-`XLIFF 1.2 Representation Guide for HTML`_ so it can be used with content
-authored with JavaScript WYSIWYG editors such as **TinyMCE** or **CKEditor**
-that save content in HTML format.
+Documentation
+-------------
 
-Important Notes
----------------
-
-- Currently ``XliffExchangeMixin`` class is incompatible with customized
-  ``ModelAdmin`` classes that use custom ``change_list_template`` and
-  ``actions`` class properties. As a workaround, you can include XLIFF file upload form
-  from ``modeltranslation_xliff/change_list.html`` template to your custom template
-  and/or add ``'export_xliff'`` action to your list of admin actions.
-- XLIFF Exchange does not accept partially translated XLIFF files, that is,
-  files with missing target translations.
-- Some translation tools allow to create "intermediary" XLIFF files for exchanging
-  translations with other tools. XLIFF Exchange does not support such files.
-  Translations needs to be saved as "target" XLIFF files that contain all necessary
-  metadata for importing translations back to your Django project.
-
-Settings
---------
-
-XLIFF Exchange supports the following settings in Django ``settings.py`` file:
-
-- ``XLIFF_EXCHANGE_DISABLE_NLTK``: By default XLIFF Exchange tries to split
-  translatable content into translation segments using sentence tokenizer from
-  `NLTK`_. Set this settings to ``False`` if you want to disable this feature or if your
-  language is not supported. You can find the list of supported languages in
-  `nltk_data project`_ on GitHub.
-- ``XLIFF_EXCHANGE_CONTENT_TYPE``: The type of translatable content
-  (default: ``'html'``). Currently only ``'html'`` and ``'text'``
-  types are supported. Default content type (``'html'``) supports plain text as well,
-  but if you content does not include any HTML markup you may want to set
-  this settings to ``'text'`` to avoid unnecessary HTML parsing overhead.
+See `XLIFF Exchange documentation`_ for more info.
 
 License
 -------
@@ -120,6 +89,3 @@ MIT. See ``LICENSE.txt``.
 
 .. _django-modeltranslation: https://github.com/deschler/django-modeltranslation
 .. _OASIS XLIFF: https://en.wikipedia.org/wiki/XLIFF
-.. _NLTK: https://www.nltk.org
-.. _nltk_data project: https://github.com/nltk/nltk_data/blob/gh-pages/packages/tokenizers/punkt.xml#L4
-.. _XLIFF 1.2 Representation Guide for HTML: http://docs.oasis-open.org/xliff/v1.2/xliff-profile-html/xliff-profile-html-1.2.html
