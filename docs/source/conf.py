@@ -95,6 +95,7 @@ html_theme_options = {
     'github_user': 'romanvm',
     'github_repo': 'django-modeltranslation-xliff',
     'github_button': True,
+    'github_type': 'star&v=2',
     'github_banner': True,
     'travis_button': True,
     'codecov_button': True,
