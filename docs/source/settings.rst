@@ -9,7 +9,7 @@ XLIFF Exchange supports the following settings in Django ``settings.py`` file:
   language is not supported. You can find the list of supported languages in
   `nltk_data project`_ on GitHub.
    .. note::
-    Without by-sentence segmentation translations segments will include entire
+    Without by-sentence segmentation translation segments will include entire
     blocks of text, e.g paragraphs, that can be very big. XLIFF files with such
     big segments are difficult to process with
     :abbr:`CAT (Computer Assisted Translation)` tools. However, some CAT tools
