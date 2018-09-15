@@ -15,6 +15,7 @@ setup(
     author_email='roman1972@gmail.com',
     description='XLIFF exchange for django-modeltranslation',
     long_description=long_descr,
+    long_description_content_type='text/x-rst',
     python_requires='>=3.4',
     install_requires=[
         'Django>=1.11',
