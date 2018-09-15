@@ -20,7 +20,7 @@ script: tox
 after_success:
   - codecov
 before_deploy:
-  - pip install Sphinx
+  - pip install -q Django Sphinx
   - cd docs
   - make html
 deploy:
