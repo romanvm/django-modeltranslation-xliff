@@ -40,6 +40,7 @@ Important Notes
   option before importing XLIFF files to Trados Studio.
 
 .. figure:: _static/Trados.XLIFF.settings.png
+  :alt: SDL Trados XLIFF Settings
 
   *XLIFF 1.2 import/export settings in SDL Trados Studio*
 
