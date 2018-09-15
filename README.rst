@@ -56,7 +56,7 @@ Installation
 - Add ``'modeltranslation_xliff'`` to ``INSTALLED_APPS`` in your project's
   ``settings.py``:
 
-.. code-block:: python
+  .. code-block:: python
 
     INSTALLED_APPS = (
         'modeltranslation',
