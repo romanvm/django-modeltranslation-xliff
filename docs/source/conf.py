@@ -14,13 +14,14 @@
 #
 import os
 import sys
-# import django
+from unittest.mock import MagicMock
 
 root_dir = os.path.dirname(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 )
 sys.path.insert(0, root_dir)
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'testapp.settings')
+sys.modules['django'] = MagicMock()
 # django.setup()
 
 
