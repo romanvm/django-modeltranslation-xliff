@@ -6,8 +6,6 @@ XLIFF Exchange for django-modeltranslation
 .. image:: https://codecov.io/gh/romanvm/django-modeltranslation-xliff/branch/master/graph/badge.svg
   :target: https://codecov.io/gh/romanvm/django-modeltranslation-xliff
 
-**This project is in WIP state and will be released as soon as it's ready!**
-
 XLIFF Exchange is an extension for `django-modeltranslation`_ package that allows to export
 translatable content in `OASIS XLIFF`_ 1.2 format supported by most translation
 tools and import content in target languages from translated XLIFF files.
