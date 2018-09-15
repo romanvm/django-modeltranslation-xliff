@@ -31,7 +31,7 @@ deploy:
     on:
       branch: master
       python: "3.7"
-      condition: $DJANGO=2.1
+      condition: $DJANGO = 2.1
   - provider: pypi
     user: $PYPI_USER
     password: $PYPI_PASS
@@ -39,6 +39,6 @@ deploy:
     on:
       tags: true
       python: "3.7"
-      condition: $DJANGO=2.1
+      condition: $DJANGO = 2.1
 notifications:
   email: false
