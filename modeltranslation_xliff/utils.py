@@ -50,12 +50,12 @@ def create_xliff(translation_data):
     XML = 'http://www.w3.org/XML/1998/namespace'
     parser = get_content_parser()
     xliff = etree.Element('xliff', {'version': '1.2'}, nsmap={'xml': XML})
-    file = etree.SubElement(xliff, 'file', {
+    file_ = etree.SubElement(xliff, 'file', {
         'original': translation_data['name'],
         'datatype': 'database',
         'source-language': translation_data['language']
     })
-    header = etree.SubElement(file, 'header')
+    header = etree.SubElement(file_, 'header')
     etree.SubElement(header, 'tool', {
         'tool-id': 'django-modeltranslation-xliff',
         'tool-name': 'XLIFF Exchange for django-modeltranslation'
@@ -63,7 +63,7 @@ def create_xliff(translation_data):
     skl = etree.SubElement(header, 'skl')
     internal_file = etree.SubElement(skl, 'internal-file', {'form': 'base64'})
     skeleton = json.dumps(translation_data)
-    body = etree.SubElement(file, 'body')
+    body = etree.SubElement(file_, 'body')
     segment_id = 1
     for obj in translation_data['objects']:
         outer_group = etree.SubElement(
@@ -138,16 +138,16 @@ def import_xliff(xliff):
     # Basic sanity check
     if tool is None or tool.attrib.get('tool-id') != 'django-modeltranslation-xliff':
         raise ValidationError('Invalid XLIFF file!')
-    file = xliff_elem.find('file')
-    target_language = file.attrib.get('target-language')
+    file_ = xliff_elem.find('file')
+    target_language = file_.attrib.get('target-language')
     if not target_language:
         raise ValidationError(_('The XLIFF file has no target language defined!'))
     target_language = target_language.lower().replace('_', '-')
-    internal_file = file.find('./header/skl/internal-file[@form="base64"]')
+    internal_file = file_.find('./header/skl/internal-file[@form="base64"]')
     if internal_file is None:
         raise ValidationError(_('Invalid XLIFF file!'))
     skeleton = b64decode(internal_file.text.encode('ascii')).decode('utf-8')
-    trans_units = file.findall('.//trans-unit')
+    trans_units = file_.findall('.//trans-unit')
     for tu in trans_units:
         segment_id = tu.attrib.get('id')
         if not segment_id:
