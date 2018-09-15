@@ -54,7 +54,9 @@ Installation
     pip install django-modeltranslation-xliff
 
 - Add ``'modeltranslation_xliff'`` to ``INSTALLED_APPS`` in your project's
-  ``settings.py``::
+  ``settings.py``:
+
+.. code-block:: python
 
     INSTALLED_APPS = (
         'modeltranslation',
