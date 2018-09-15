@@ -9,7 +9,7 @@ setup(
     name='django-modeltranslation-xliff',
     version=VERSION,
     packages=['modeltranslation_xliff'],
-    url='',
+    url='https://github.com/romanvm/django-modeltranslation-xliff',
     license='MIT',
     author='Roman Miroshnychenko',
     author_email='roman1972@gmail.com',
