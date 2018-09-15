@@ -51,7 +51,18 @@ combinations in ``tox.ini`` file.
 Installation
 ------------
 
-TBD
+- Install XLIFF Exchange with ``pip``::
+
+    pip install django-modeltranslation-xliff
+
+- Add ``'modeltranslation_xliff'`` to ``INSTALLED_APPS`` in your project's
+  :file:`settings.py`::
+
+    INSTALLED_APPS = (
+        'modeltranslation',
+        'modeltranslation_xliff',
+        ...
+    )
 
 Usage
 -----
@@ -89,3 +100,5 @@ MIT. See ``LICENSE.txt``.
 
 .. _django-modeltranslation: https://github.com/deschler/django-modeltranslation
 .. _OASIS XLIFF: https://en.wikipedia.org/wiki/XLIFF
+.. _XLIFF Exchange documentation: https://romanvm.github.io/django-modeltranslation-xliff
+
