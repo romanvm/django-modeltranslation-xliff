@@ -1,4 +1,4 @@
-include .coveragerc LICENSE.txt manage.py pytest.ini README.rst requirements.txt tox.ini
+include *.rst *.txt .coveragerc pytest.ini manage.py tox.ini
 recursive-include modeltranslation_xliff *
 recursive-include testapp *
 global-exclude *.pyc *.pyo __pycache__
